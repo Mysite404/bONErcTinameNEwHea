@@ -66,3 +66,66 @@ document.head.insertAdjacentHTML('beforeend', `
         }
     </style>
 `);
+
+// Prevent Clickjacking
+if (window.top !== window.self) {
+    window.top.location = window.self.location; // Break out of iframe
+}
+
+// Block Keyboard Shortcuts
+document.addEventListener('keydown', function (e) {
+    if (
+        e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) || 
+        (e.ctrlKey && e.key === 'U')
+    ) {
+        e.preventDefault();
+        alert('This action is disabled for security reasons.');
+    }
+});
+
+// Disable Right Click
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
+
+
+// Form Input Sanitization
+function sanitizeInput(input) {
+    return input.replace(/[<>"'`]/g, '');
+}
+document.querySelector('form').addEventListener('submit', function (e) {
+    const inputs = this.querySelectorAll('input, textarea');
+    inputs.forEach(input => input.value = sanitizeInput(input.value));
+});
+
+
+// Auto Log Out After Inactivity
+let inactivityTime = function () {
+    let timer;
+    function resetTimer() {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            alert("You were inactive. Logging out...");
+            window.location.href = "/logout.html"; // Change as needed
+        }, 10 * 60 * 1000); // 10 minutes
+    }
+
+    ['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(event =>
+        document.addEventListener(event, resetTimer)
+    );
+};
+inactivityTime();
+
+
+// Detect Console Open
+setInterval(() => {
+    const devtools = /./;
+    devtools.toString = function () {
+        this.opened = true;
+        throw "Dev tools detected";
+    };
+    console.log('%c', devtools);
+}, 1000);
+
+

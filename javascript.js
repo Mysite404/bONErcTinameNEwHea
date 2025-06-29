@@ -160,21 +160,33 @@ setInterval(() => {
         }
     });
 })();
-fetch("https://ipapi.co/json/")
-  .then(res => res.json())
-  .then(data => {
+(async function () {
+  const bannedCountries = ["IL"]; // Add more ISO country codes as needed
+
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    const data = await res.json();
+
     console.log("User IP info:", data);
 
-    // Example: Block certain countries (often used by VPN exit nodes)
-    const bannedCountries = ["IL"]; // Customize this
+    // Check for banned countries
     if (bannedCountries.includes(data.country)) {
-      document.body.innerHTML = "Access blocked due to suspicious traffic.";
+      document.body.innerHTML = "🚫 Access blocked from your location.";
+      return;
     }
 
-    // Optional: Alert if using known VPN/Hosting provider
-    if (data.org && /vpn|colo|hosting|data/i.test(data.org)) {
-      console.warn("⚠️ Likely VPN/proxy detected:", data.org);
-      // Optional: Show captcha, block access, etc.
+    // Check for VPN / hosting provider
+    if (data.org && /vpn|colo|hosting|data|digitalocean|amazon|google/i.test(data.org)) {
+      document.body.innerHTML = "🔐 VPN or proxy access detected. Please use a direct connection.";
+      return;
     }
-  });
+
+    // Otherwise, allow normal page access
+    document.body.style.display = "block";
+
+  } catch (err) {
+    console.error("IP check failed:", err);
+    document.body.innerHTML = "⚠️ Could not verify access. Please try again later.";
+  }
+})();
 

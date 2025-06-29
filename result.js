@@ -1,4 +1,4 @@
-{
+
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "HuskDev",
@@ -8,4 +8,3 @@
     "target": "https://huskdev.xyz/?s={search_term_string}",
     "query-input": "required name=search_term_string"
   }
-}

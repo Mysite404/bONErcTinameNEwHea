@@ -563,10 +563,24 @@
     }
 }, { passive: false });
 
-// Prevent horizontal scrolling with touch events
+let startX = 0;
+let startY = 0;
+
+document.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }
+});
+
 document.addEventListener('touchmove', function(e) {
     if (e.touches.length === 1) {
-        e.preventDefault();
+        let deltaX = Math.abs(e.touches[0].clientX - startX);
+        let deltaY = Math.abs(e.touches[0].clientY - startY);
+
+        if (deltaX > deltaY) {
+            e.preventDefault(); // Only block if it's mostly horizontal movement
+        }
     }
 }, { passive: false });
 

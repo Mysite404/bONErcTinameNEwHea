@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcrtXErAAAAAFhjhqmHfyqPSqR4P6RjkY8rBET5"></script>
 
     <!-- Discord Meta Tags -->
     <meta property="og:title" content="HuskDev | A web developer who builds clean, fast, and functional websites that work for your business." />
@@ -674,41 +675,6 @@
     g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
-
-
-    <!-- anti bocah -->
-    <script>(function() {
-    // Block requests with no user interaction (likely bot)
-    if (!('ontouchstart' in window) && !navigator.maxTouchPoints && !navigator.userAgent.includes('Mobile')) {
-        setTimeout(() => {
-            if (!window.__userInteracted) {
-                document.body.innerHTML = "Access denied";
-            }
-        }, 3000);
-    }
-
-    // Detect headless browsers
-    if (navigator.webdriver || window.chrome && !window.chrome.webstore) {
-        document.body.innerHTML = "Blocked suspicious request";
-    }
-
-    // Flag no mouse or keyboard activity (bot)
-    let hasInteracted = false;
-    ['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt =>
-        window.addEventListener(evt, () => {
-            window.__userInteracted = true;
-            hasInteracted = true;
-        })
-    );
-
-    // Random delay before content loads (anti-bot)
-    document.addEventListener("DOMContentLoaded", () => {
-        if (!hasInteracted) {
-            setTimeout(() => {
-                document.body.style.display = "block";
-            }, 1000 + Math.random() * 3000); // human delay
-        }
-    });
-})();</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

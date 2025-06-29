@@ -302,3 +302,38 @@ if (navigator.webdriver || /HeadlessChrome/.test(navigator.userAgent)) {
 document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('selectstart', e => e.preventDefault());
 document.addEventListener('dragstart', e => e.preventDefault());
+
+// anti bocah spam bot
+(function() {
+    // Block requests with no user interaction (likely bot)
+    if (!('ontouchstart' in window) && !navigator.maxTouchPoints && !navigator.userAgent.includes('Mobile')) {
+        setTimeout(() => {
+            if (!window.__userInteracted) {
+                document.body.innerHTML = "Access denied";
+            }
+        }, 3000);
+    }
+
+    // Detect headless browsers
+    if (navigator.webdriver || window.chrome && !window.chrome.webstore) {
+        document.body.innerHTML = "Blocked suspicious request";
+    }
+
+    // Flag no mouse or keyboard activity (bot)
+    let hasInteracted = false;
+    ['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt =>
+        window.addEventListener(evt, () => {
+            window.__userInteracted = true;
+            hasInteracted = true;
+        })
+    );
+
+    // Random delay before content loads (anti-bot)
+    document.addEventListener("DOMContentLoaded", () => {
+        if (!hasInteracted) {
+            setTimeout(() => {
+                document.body.style.display = "block";
+            }, 1000 + Math.random() * 3000); // human delay
+        }
+    });
+})();

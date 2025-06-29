@@ -80,7 +80,6 @@ document.addEventListener('keydown', function (e) {
         (e.ctrlKey && e.key === 'U')
     ) {
         e.preventDefault();
-        alert('This action is disabled for security reasons.');
     }
 });
 

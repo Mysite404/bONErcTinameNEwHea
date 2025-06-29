@@ -127,5 +127,54 @@ setInterval(() => {
     };
     console.log('%c', devtools);
 }, 1000);
+(function() {
+    // Block requests with no user interaction (likely bot)
+    if (!('ontouchstart' in window) && !navigator.maxTouchPoints && !navigator.userAgent.includes('Mobile')) {
+        setTimeout(() => {
+            if (!window.__userInteracted) {
+                document.body.innerHTML = "Access denied";
+            }
+        }, 3000);
+    }
 
+    // Detect headless browsers
+    if (navigator.webdriver || window.chrome && !window.chrome.webstore) {
+        document.body.innerHTML = "Blocked suspicious request";
+    }
+
+    // Flag no mouse or keyboard activity (bot)
+    let hasInteracted = false;
+    ['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt =>
+        window.addEventListener(evt, () => {
+            window.__userInteracted = true;
+            hasInteracted = true;
+        })
+    );
+
+    // Random delay before content loads (anti-bot)
+    document.addEventListener("DOMContentLoaded", () => {
+        if (!hasInteracted) {
+            setTimeout(() => {
+                document.body.style.display = "block";
+            }, 1000 + Math.random() * 3000); // human delay
+        }
+    });
+})();
+fetch("https://ipapi.co/json/")
+  .then(res => res.json())
+  .then(data => {
+    console.log("User IP info:", data);
+
+    // Example: Block certain countries (often used by VPN exit nodes)
+    const bannedCountries = ["IL"]; // Customize this
+    if (bannedCountries.includes(data.country)) {
+      document.body.innerHTML = "Access blocked due to suspicious traffic.";
+    }
+
+    // Optional: Alert if using known VPN/Hosting provider
+    if (data.org && /vpn|colo|hosting|data/i.test(data.org)) {
+      console.warn("⚠️ Likely VPN/proxy detected:", data.org);
+      // Optional: Show captcha, block access, etc.
+    }
+  });
 

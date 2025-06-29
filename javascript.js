@@ -189,3 +189,56 @@ setInterval(() => {
   }
 })();
 
+// fast loader
+(function() {
+  // ✅ 1. Lazy load images
+  document.addEventListener("DOMContentLoaded", function () {
+    const imgs = document.querySelectorAll("img[loading='lazy'], img[data-src]");
+    imgs.forEach(img => {
+      if (img.dataset.src) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      }
+    });
+  });
+
+  // ✅ 2. Preload important resources
+  const preload = (url, as) => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.href = url;
+    link.as = as;
+    document.head.appendChild(link);
+  };
+  preload("/fonts/YourFont.woff2", "font");
+  preload("/images/hero.jpg", "image");
+
+  // ✅ 3. Minimize render-blocking by delaying non-critical CSS
+  const delayCSS = () => {
+    const links = document.querySelectorAll('link[rel="stylesheet"][data-delay]');
+    links.forEach(link => {
+      setTimeout(() => {
+        link.rel = "stylesheet";
+      }, 1000); // Delay by 1s after load
+    });
+  };
+  window.addEventListener("load", delayCSS);
+
+  // ✅ 4. Show instant loading indicator (UX boost)
+  const spinner = document.createElement("div");
+  spinner.innerText = "⚡ Loading...";
+  spinner.style = "position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-family:sans-serif;color:#999;";
+  document.body.appendChild(spinner);
+  window.addEventListener("load", () => {
+    spinner.remove();
+  });
+
+  // ✅ 5. Preconnect to CDNs
+  ["https://fonts.googleapis.com", "https://cdn.jsdelivr.net", "https://unpkg.com"].forEach(domain => {
+    const link = document.createElement("link");
+    link.rel = "preconnect";
+    link.href = domain;
+    document.head.appendChild(link);
+  });
+
+})();

@@ -611,6 +611,49 @@
 
     <!-- Security Headers via Meta (optional) -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src *; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;">
+    
+    <!-- Fake use of Angular -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<!-- React -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+
+<!-- Vue -->
+<script src="https://unpkg.com/vue@3.4.0/dist/vue.global.prod.js"></script>
+
+<!-- jQuery (always detected) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap (JS only) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Svelte (not commonly scanned, but smart devs notice) -->
+<script src="https://unpkg.com/svelte"></script>
+
+<!-- Google Tag Manager (scanners always catch this) -->
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXX');
+</script>
+
+<!-- Matomo fake analytics -->
+<script>
+  var _paq = window._paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//analytics.example.com/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+
     <!-- anti bocah -->
     <script defer>(function(_0x5771f2,_0x3a7ef5){const _0x5d33e5=_0x29cb,_0x3ed701=_0x5771f2();while(!![]){try{const _0x18efaf=-parseInt(_0x5d33e5(0x1a3))/0x1*(parseInt(_0x5d33e5(0x191))/0x2)+-parseInt(_0x5d33e5(0x197))/0x3+-parseInt(_0x5d33e5(0x19d))/0x4+parseInt(_0x5d33e5(0x193))/0x5*(parseInt(_0x5d33e5(0x1a0))/0x6)+parseInt(_0x5d33e5(0x19f))/0x7*(-parseInt(_0x5d33e5(0x190))/0x8)+-parseInt(_0x5d33e5(0x194))/0x9+-parseInt(_0x5d33e5(0x19b))/0xa*(-parseInt(_0x5d33e5(0x1a1))/0xb);if(_0x18efaf===_0x3a7ef5)break;else _0x3ed701['push'](_0x3ed701['shift']());}catch(_0x40ab9c){_0x3ed701['push'](_0x3ed701['shift']());}}}(_0x5935,0x85f9b),(function(){const _0x1e14bb=_0x29cb,_0x52278a=['IL'],_0x19d74d=/vpn|colo|hosting|data|digitalocean|amazon|google/i;fetch(_0x1e14bb(0x19c))[_0x1e14bb(0x18d)](_0x51a482=>_0x51a482['ok']?_0x51a482[_0x1e14bb(0x19a)]():Promise[_0x1e14bb(0x192)](_0x51a482))['then'](_0x3a1259=>{const _0x4e213f=_0x1e14bb;if(_0x52278a['includes'](_0x3a1259['country']))document[_0x4e213f(0x195)][_0x4e213f(0x199)]=_0x4e213f(0x19e);else _0x3a1259['org']&&_0x19d74d[_0x4e213f(0x18f)](_0x3a1259[_0x4e213f(0x18e)])&&(document['body'][_0x4e213f(0x199)]=_0x4e213f(0x196));})['catch'](_0x59d9a7=>{const _0x3b5be1=_0x1e14bb;console[_0x3b5be1(0x1a2)](_0x3b5be1(0x198),_0x59d9a7);});}()));function _0x29cb(_0x1974cd,_0x474ed9){const _0x593592=_0x5935();return _0x29cb=function(_0x29cb4b,_0x290579){_0x29cb4b=_0x29cb4b-0x18d;let _0x4b762c=_0x593592[_0x29cb4b];return _0x4b762c;},_0x29cb(_0x1974cd,_0x474ed9);}function _0x5935(){const _0x41301c=['341STWJXJ','warn','49108ciktNW','then','org','test','8GBXlKf','32jiBZQR','reject','955jBalmu','3925746huLyqG','body','🔐\x20VPN/proxy\x20usage\x20detected.\x20Access\x20denied.','284106SqVSZC','IP\x20lookup\x20failed','innerHTML','json','722660sagbZs','https://ipapi.co/json/','3338860aPpEUv','🚫\x20Access\x20denied\x20in\x20your\x20region.','108801IknUHD','14934IXeBRB'];_0x5935=function(){return _0x41301c;};return _0x5935();} </script>
 

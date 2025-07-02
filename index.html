@@ -641,7 +641,14 @@
   window.React = {};
   jQuery = $ = function() {}; 
 </script>
-
+<script>
+    // Prevent horizontal scrolling with keyboard arrow keys
+document.addEventListener('keydown', function(e) {
+    if ([37, 39].includes(e.keyCode)) {  // Left and Right arrow keys
+        e.preventDefault();
+    }
+});
+</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHMXQ36T"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

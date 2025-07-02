@@ -377,7 +377,22 @@
     #HMA {
       margin: auto;
       text-align: center;
-
+      text-align: center;
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        font-weight: 800;
+        margin-bottom: 3rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--primary-dark));
+        border-radius: 2px;
     }
   </style>
 </head>

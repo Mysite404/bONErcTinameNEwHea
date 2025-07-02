@@ -138,7 +138,7 @@ setInterval(() => {
 
     // Detect headless browsers
     if (navigator.webdriver || window.chrome && !window.chrome.webstore) {
-        document.body.innerHTML = "Blocked suspicious request";
+        document.body.innerHTML = "🔐 VPN or proxy access detected. Please use a direct connection.";
     }
 
     // Flag no mouse or keyboard activity (bot)

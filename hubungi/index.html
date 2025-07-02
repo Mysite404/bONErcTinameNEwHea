@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Same meta tags as your index.html -->
+  <meta name="generator" content="WordPress 100">
+  <meta name="framework" content="Laravel 10">
+  <meta name="framework" content="Next.js">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hubungi Saya | HUSKDEV | Perkhidmatan Membina Laman Web</title>
+  <meta name="author" content="HuskDev">
+  <link rel="canonical" href="https://huskdev.xyz/contact-me">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Hubungi HuskDev untuk membuat tempahan laman web. Ketahui langkah-langkah dan maklumat yang perlu disediakan untuk membina laman web anda.">
+  
+  <!-- Same styling as your index.html -->
+  <style>
+    :root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --text: #1e293b;
+        --text-light: #64748b;
+        --glass: rgba(255, 255, 255, 0.25);
+        --glass-border: rgba(255, 255, 255, 0.18);
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: var(--text);
+        background-color: #e1effc;
+        line-height: 1.6;
+        min-height: 100vh;
+        background-image: 
+            radial-gradient(at 80% 0%, hsla(197, 100%, 55%, 0.1) 0px, transparent 50%),
+            radial-gradient(at 0% 50%, hsla(355, 100%, 61%, 0.1) 0px, transparent 60%);
+    }
+    
+    @supports (font-variation-settings: normal) {
+        body { font-family: 'Inter var', -apple-system, BlinkMacSystemFont, sans-serif; }
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    /* Hero section for contact page */
+    .contact-hero {
+        display: flex;
+        align-items: center;
+        padding: 6rem 0;
+        position: relative;
+        overflow: hidden;
+        width: 100vw;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        background: linear-gradient(45deg, rgba(99, 102, 241, 0.05), rgba(79, 70, 229, 0.05));
+        text-align: center;
+    }
+    
+    .contact-hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .contact-hero h1 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: var(--text);
+    }
+    
+    .contact-hero p {
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+        margin: 0 auto 2rem auto;
+        color: var(--text-light);
+        font-weight: 500;
+        max-width: 600px;
+    }
+    
+    .highlight {
+        background: linear-gradient(120deg, var(--primary) 0%, var(--primary-dark) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 700;
+    }
+    
+    /* Contact steps section */
+    .contact-steps {
+        margin: 5rem auto;
+    }
+    
+    .section-title {
+        text-align: center;
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        font-weight: 800;
+        margin-bottom: 3rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--primary-dark));
+        border-radius: 2px;
+    }
+    
+    .steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .step-card {
+        background: var(--glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    }
+    
+    .step-card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .step-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        font-weight: 700;
+        margin-right: 1rem;
+    }
+    
+    .step-card h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--primary-dark);
+        display: flex;
+        align-items: center;
+    }
+    
+    .step-card p {
+        color: var(--text-light);
+        margin-left: 3.5rem;
+    }
+    
+    /* Requirements section */
+    .requirements {
+        margin: 5rem auto;
+    }
+    
+    .requirements-content {
+        background: var(--glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 3rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .requirements h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--primary-dark);
+        text-align: center;
+    }
+    
+    .requirements ul {
+        list-style-type: none;
+    }
+    
+    .requirements li {
+        margin-bottom: 1rem;
+        padding-left: 2rem;
+        position: relative;
+        color: var(--text-light);
+    }
+    
+    .requirements li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+    }
+    
+    .requirements strong {
+        color: var(--text);
+        font-weight: 600;
+    }
+    
+    /* Email CTA */
+    .email-cta {
+        text-align: center;
+        margin: 5rem auto;
+    }
+    
+    .email-box {
+        display: inline-flex;
+        align-items: center;
+        background: var(--glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 50px;
+        padding: 1rem 1.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    }
+    
+    .email-box:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+    }
+    
+    .email-box i {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        color: var(--primary);
+    }
+    
+    .email-address {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--primary-dark);
+    }
+    
+    /* PDF Instructions */
+    .pdf-instructions {
+        background: var(--glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 800px;
+        margin: 3rem auto;
+    }
+    
+    .pdf-instructions h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--primary-dark);
+        text-align: center;
+    }
+    
+    .pdf-instructions p {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    
+    .pdf-checklist {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .pdf-checklist h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--primary-dark);
+    }
+    
+    .pdf-checklist ul {
+        list-style-type: none;
+    }
+    
+    .pdf-checklist li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+        color: var(--text-light);
+    }
+    
+    .pdf-checklist li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: bold;
+    }
+    
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 3rem 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .contact-hero {
+            padding: 4rem 0;
+        }
+        
+        .requirements-content, 
+        .pdf-instructions {
+            padding: 1.5rem;
+        }
+        
+        .step-card h3 {
+            font-size: 1.2rem;
+        }
+        
+        .email-box {
+            flex-direction: column;
+            padding: 1.5rem;
+        }
+        
+        .email-box i {
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+    }
+  </style>
+</head>
+<body>
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <h1>Buat Tempahan <span class="highlight">Laman Web</span></h1>
+      <p>Ikuti langkah-langkah mudah ini untuk memulakan projek laman web anda dengan HuskDev</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="contact-steps">
+      <h2 class="section-title">Langkah-Langkah Tempahan</h2>
+      
+      <div class="steps-container">
+        <div class="step-card">
+          <h3><span class="step-number">1</span> Sediakan Maklumat</h3>
+          <p>Sediakan semua maklumat dan bahan yang diperlukan seperti yang disenaraikan di bawah.</p>
+        </div>
+        
+        <div class="step-card">
+          <h3><span class="step-number">2</span> Hantar PDF</h3>
+          <p>Hantarkan fail PDF yang mengandungi semua maklumat yang diperlukan ke alamat email saya.</p>
+        </div>
+        
+        <div class="step-card">
+          <h3><span class="step-number">3</span> Perbincangan Awal</h3>
+          <p>Saya akan menghubungi anda untuk perbincangan awal tentang reka bentuk dan keperluan laman web.</p>
+        </div>
+        
+        <div class="step-card">
+          <h3><span class="step-number">4</span> Pembayaran & Pembangunan</h3>
+          <p>Setelah persetujuan dicapai, pembayaran awal diperlukan sebelum kerja pembangunan dimulakan.</p>
+        </div>
+        
+        <div class="step-card">
+          <h3><span class="step-number">5</span> Ujian & Pelancaran</h3>
+          <p>Anda akan menerima versi ujian untuk semakan sebelum laman web dilancarkan secara rasmi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="requirements">
+      <h2 class="section-title">Apa Yang Perlu Disediakan</h2>
+      
+      <div class="requirements-content">
+        <h3>Maklumat Yang Perlu Dihantar Melalui Email</h3>
+        
+        <ul>
+          <li><strong>Maklumat Peribadi/Perniagaan:</strong> Nama penuh, nombor telefon, dan alamat</li>
+          <li><strong>Tujuan Laman Web:</strong> NGO/individu/perniagaan (sertakan no. pendaftaran SSM jika ada)</li>
+          <li><strong>Judul Laman Web:</strong> Title pada header website</li>
+          <li><strong>Tema:</strong> Warna dan gaya yang anda inginkan (contoh: minimalis, moden, klasik)</li>
+          <li><strong>Kandungan:</strong> Semua teks, gambar, logo dan bahan yang ingin dimasukkan</li>
+          <li><strong>Deskripsi:</strong> Penerangan ringkas tentang laman web anda</li>
+          <li><strong>Struktur Laman:</strong> Senarai bahagian yang anda mahu (contoh: 1. Pengenalan 2. Promosi 3. Katalog produk)</li>
+          <li><strong>Domain:</strong> Domain sendiri atau menggunakan subdomain percuma (yourname.huskdev.xyz)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="pdf-instructions">
+      <h3>Panduan Penyediaan Fail PDF</h3>
+      <p>Fail PDF anda perlu mengandungi maklumat berikut:</p>
+      
+      <div class="pdf-checklist">
+        <h4>Maklumat Asas</h4>
+        <ul>
+          <li>Nama penuh pemilik laman web</li>
+          <li>Nombor telefon yang boleh dihubungi</li>
+          <li>Alamat (jika berkenaan)</li>
+        </ul>
+      </div>
+      
+      <div class="pdf-checklist">
+        <h4>Maklumat Laman Web</h4>
+        <ul>
+          <li>Tujuan laman web (NGO/individu/perniagaan)</li>
+          <li>Nombor pendaftaran SSM (jika berkenaan)</li>
+          <li>Judul/tajuk laman web</li>
+          <li>Tema atau gaya yang diinginkan</li>
+          <li>Deskripsi ringkas tentang laman web</li>
+        </ul>
+      </div>
+      
+      <div class="pdf-checklist">
+        <h4>Kandungan & Struktur</h4>
+        <ul>
+          <li>Senarai bahagian yang diperlukan (contoh: Home, About, Services, Contact)</li>
+          <li>Semua teks yang ingin dimasukkan (boleh dalam format point jika belum lengkap)</li>
+          <li>Senarai gambar/logo yang perlu dimasukkan (lampirkan fail berasingan jika ada)</li>
+        </ul>
+      </div>
+      
+      <div class="pdf-checklist">
+        <h4>Lain-lain Keperluan</h4>
+        <ul>
+          <li>Pilihan domain (sendiri atau subdomain percuma)</li>
+          <li>Fungsi khusus yang diperlukan (contoh: borang hubungi, galeri, dll)</li>
+          <li>Contoh laman web yang anda suka (jika ada)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="email-cta">
+      <h2 class="section-title">Hantar Maklumat Anda</h2>
+      <p>Setelah menyediakan semua maklumat, sila hantarkan ke alamat email saya:</p>
+      
+      <a href="mailto:contact@huskdev.xyz" class="email-box">
+        <i class="fas fa-envelope"></i>
+        <span class="email-address">contact@huskdev.xyz</span>
+      </a>
+      
+      <p style="margin-top: 2rem;">Saya akan membalas dalam masa 24-48 jam selepas menerima email anda.</p>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p><i class="fas fa-code"></i> dan <i class="fas fa-paint-brush"></i> oleh Huskdev</p>
+    </div>
+  </footer>
+
+  <!-- Same scripts as your index.html -->
+  <script src="javascript.js"></script>
+  <script src="result.js" type="application/ld+json"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>

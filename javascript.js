@@ -131,14 +131,14 @@ setInterval(() => {
     if (!('ontouchstart' in window) && !navigator.maxTouchPoints && !navigator.userAgent.includes('Mobile')) {
         setTimeout(() => {
             if (!window.__userInteracted) {
-                document.body.innerHTML = "Access denied";
+                document.body.innerHTML = "403 Forbidden Access denied";
             }
         }, 3000);
     }
 
     // Detect headless browsers
     if (navigator.webdriver || window.chrome && !window.chrome.webstore) {
-        document.body.innerHTML = "🔐 VPN or proxy access detected. Please use a direct connection.";
+        document.body.innerHTML = "403 Forbidden 🔐 VPN or proxy access detected. Please use a direct connection. ";
     }
 
     // Flag no mouse or keyboard activity (bot)
@@ -170,13 +170,13 @@ setInterval(() => {
 
     // Check for banned countries
     if (bannedCountries.includes(data.country)) {
-      document.body.innerHTML = "🚫 Access blocked from your location.";
+      document.body.innerHTML = "403 Forbidden 🚫 Access blocked from your location.";
       return;
     }
 
     // Check for VPN / hosting provider
     if (data.org && /vpn|colo|hosting|data|digitalocean|amazon|google/i.test(data.org)) {
-      document.body.innerHTML = "🔐 VPN or proxy access detected. Please use a direct connection.";
+      document.body.innerHTML = "403 Forbidden 🔐 VPN or proxy access detected. Please use a direct connection.";
       return;
     }
 
@@ -185,7 +185,7 @@ setInterval(() => {
 
   } catch (err) {
     console.error("IP check failed:", err);
-    document.body.innerHTML = "⚠️ Could not verify access. Please try again later.";
+    document.body.innerHTML = "403 Forbidden ⚠️ Could not verify access. Please try again later.";
   }
 })();
 
@@ -316,7 +316,7 @@ document.addEventListener('dragstart', e => e.preventDefault());
 
     // Detect headless browsers
     if (navigator.webdriver || window.chrome && !window.chrome.webstore) {
-        document.body.innerHTML = "🔐 VPN or proxy access detected. Please use a direct connection.";
+        document.body.innerHTML = "403 Forbidden 🔐 VPN or proxy access detected. Please use a direct connection.";
     }
 
     // Flag no mouse or keyboard activity (bot)
